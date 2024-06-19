@@ -9,7 +9,7 @@ type Props = {
 
 function Obstakles({ args, color, position }: Props) {
     return (
-        <RigidBody type="fixed" colliders="cuboid" mass={1}>
+        <RigidBody type="dynamic" colliders="cuboid" mass={1}>
             <mesh castShadow position={position}
             >
                 <boxGeometry args={args} />

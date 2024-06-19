@@ -10,7 +10,7 @@ const Floor = ({ color, rotation }: Props) => {
             <mesh receiveShadow rotation={rotation}
             >
                 <planeGeometry args={[1000, 1000]} />
-                <meshStandardMaterial color="#ffffff" />
+                <meshStandardMaterial color="#11F3FA" />
             </mesh>
         </RigidBody>
     );

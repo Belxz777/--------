@@ -32,6 +32,12 @@ importers:
       three:
         specifier: ^0.165.0
         version: 0.165.0
+      three-stdlib:
+        specifier: ^2.30.3
+        version: 2.30.3(three@0.165.0)
+      zustand:
+        specifier: ^4.5.2
+        version: 4.5.2(@types/react@18.3.3)(react@18.3.1)
     devDependencies:
       '@types/node':
         specifier: ^20

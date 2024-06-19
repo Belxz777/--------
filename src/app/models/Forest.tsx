@@ -830,4 +830,4 @@ export function Forest(props: JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('/Walk in the Woods.glb')
+useGLTF.preload('./models/forest.glb')

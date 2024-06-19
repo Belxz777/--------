@@ -4,15 +4,23 @@ import {Scene} from "./components/Scene";
 import Floor from "./components/Floor";
 import Lights from "./components/Lights";
 import { Physics } from "@react-three/rapier";
-import { Canvas } from "@react-three/fiber";
-import { PointerLockControls, Sky } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Cloud, Clouds, PointerLockControls, Sky, Sparkles, StatsGl } from "@react-three/drei";
 import BaseCharacter from "./main/Character";
 import { Forest } from "./models/Forest";
+import { Taxi } from "./models/Taxi";
+import { useRef } from "react";
+import { Model } from "./models/Block";
 
 export default function Home() {
+  const ref = useRef()
+  const cloud0 = useRef()
+
   return (
     <div className=" w-screen h-screen">
         <Canvas shadows camera={{ fov: 50 }}>
+          
+        <StatsGl />
           <Lights />
         <Physics gravity={[0, -9.81, 0]}  >
         <Obstakles  position={[0, 0.5, 0]} args={[2, 1, 2]} color="red"/>
@@ -20,11 +28,25 @@ export default function Home() {
   <Obstakles  position={[0, 0.5, 5]} args={[3, 1, 1.3]} color="green" />
   <BaseCharacter controls position={[0, 2, 0]} args={[0.5]} color="yellow" />
   <Forest position={[10,2.2,20]} scale={20}/>
+  <Sparkles scale={20} position={[10,10, 20]}/>
+  
+  
+
   <Floor rotation={[Math.PI / -2, 0, 0]} color="red"/>
+  
         </Physics>
         <PointerLockControls />
         <axesHelper args={[5]} />
       <Sky/>
+      <Clouds  limit={100} range={100} position={[0, 300, 0]}>
+          {/* <Cloud  bounds={[0, 1, 1]} color="#d0d0d0" seed={1} position={[0, 60, 0]} /> */}
+          {/* <Cloud color="#fffff" seed={2} position={[15, 60, 0]} />
+          <Cloud color="#d0e0d0" seed={3} position={[-15, 60, 0]} />
+          <Cloud  color="#a0b0d0" seed={4} position={[0, 60, -12]} />
+          <Cloud color="#c0c0dd" seed={5} position={[0, 60, 12]} /> */}
+          <Cloud concentrate="inside" growth={100} color="#FDFEFE" opacity={1.25} seed={10} bounds={200} volume={200} 
+          />
+        </Clouds>
     </Canvas>
     </div>
   );

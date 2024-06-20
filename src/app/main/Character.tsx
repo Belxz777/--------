@@ -12,12 +12,12 @@ const BaseCharacter = (props: any) => {
     const frontVector = new Vector3();
     const sideVector = new Vector3();
     const speed = new Vector3();
-    const SPEED = 10;
+    const SPEED = 5;
 
     const { camera } = useThree();
 
     const ref = useRef<any>(null);
-  let { forward, backward, left, right, jump,reload } = usePlayerControls();
+  let { forward, backward, left, right, jump,reload,change } = usePlayerControls();
     const { world, setWorld, rapier } = useRapier();
     const checkGrounded = (): boolean |null => {
         if (!ref.current) return false;
@@ -56,14 +56,12 @@ const BaseCharacter = (props: any) => {
 
         ref.current.setLinvel({ x: direction.x, y: velocity.y, z: direction.z });
         ref.current.wakeUp()
-        if (jump && Math.abs(ovelocity.current[1]) < 0.05) ref.current.setLinvel({ x: ovelocity.current[0], y: 5, z: ovelocity.current[2] });
+        if (jump && Math.abs(ovelocity.current[1]) < 0.05) ref.current.setLinvel({ x: ovelocity.current[0], y: 4, z: ovelocity.current[2] });
         // if (jump && Math.abs(ovelocity.current[1]) < 0.05 ) {
         //     ref.current.setLinvel({ x: ovelocity.current[0], y: 5, z: ovelocity.current[2] });
         //     // console.log(ref.current.linvel().y)
         // }
-        if (reload) {
-            ref.current.setTranslation({ x: 0, y: 0, z: 0 });
-        }
+ 
         ovelocity.current = [velocity.x, velocity.y, velocity.z];
 
         const grounded = checkGrounded();

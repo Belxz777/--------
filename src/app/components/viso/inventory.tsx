@@ -15,7 +15,7 @@ const changeMaterial = useBlocksState((state: any) => state.changeColor);
 const current = useBlocksState((state: any) => state.colortipes)
     const [materialIndex, setMaterialIndex] = useState(0);
   const materials = ['Stone', 'Glass', 'Wood'];
-  let {change } = usePlayerControls();
+  let {change,car } = usePlayerControls();
   useEffect(()=>{
     let prev =0
     if(materialIndex == materials.length){
@@ -31,8 +31,10 @@ const current = useBlocksState((state: any) => state.colortipes)
       setMaterialIndex((materialIndex + 1) % materials.length);
     changeMaterial(materials[materialIndex]);
     return
-prev++
   },[change])
+  useEffect(()=>{
+    alert("df")
+},[car])
 //   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
 //        alert(
 //     event.key

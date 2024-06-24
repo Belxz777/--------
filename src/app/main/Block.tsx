@@ -21,7 +21,7 @@ export function Blocks(): JSX.Element {
     return (
         cubes.map((coords: any, index: number) => (
             
-            <Block key={index} position={coords} type={coords.tipe} 
+            <Block key={index} position={coords} 
             texture={coords[3] }/>
         ))
         )
@@ -84,7 +84,8 @@ export   function Block(props:any) {
        >
           {[...Array(6)].map((_, index) => (
             <meshStandardMaterial
-             attach={`material-${index}`} key={index} 
+            //  attach={`material-${index}`}
+              key={index} 
          map={
 props.texture ==="Wood"? woodTex : props.texture ==="Glass"? glassTex : stoneTex
          }

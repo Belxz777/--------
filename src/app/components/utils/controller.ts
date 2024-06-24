@@ -8,36 +8,34 @@ type PlayerControls = {
   backward: boolean;
   left: boolean;
   right: boolean;
-  jump: boolean;
+  jump: boolean,
+  reload:boolean,
+  change:boolean,
+  takeCar:boolean
 };
 export const usePlayerControls = () => {
   const keys = {
      KeyW: 'forward', KeyS: 'backward',
     KeyA: 'left', KeyD: 'right',
     Space: 'jump',KeyR:"reload",
-KeyH:"change"
+KeyH:"change",KeyL:"car"
    };
     const moveFieldByKey = (key: number) => keys[key];
 
   const [movement, setMovement] = useState(
     { forward: false, backward: false, left: false, 
       right: false, jump: false,reload:false,
-      change:false });
+      change:false,car:false });
 
   useEffect(() => {
     const handleKeyDown = (e: any) => {
-      // if(e.code==="KeyH"){
-      //   console.log(
-      //   "change"
-      //   )
-      // setMovement((m) => ({ ...m, change: 1 + m.change}));
-      // }
       setMovement((m) => ({ ...m, [moveFieldByKey(e.code)]: true }));}
     const handleKeyUp = (e: any) => {
-      if (e.code === "KeyH") {
-        setMovement((m) => ({ ...m, [moveFieldByKey(e.code)]:true }));
-      }
+      // if (e.code === "KeyH") {
+      //   setMovement((m) => ({ ...m, [moveFieldByKey(e.code)]:true }));
+      // }w
       setMovement((m) => ({ ...m, [moveFieldByKey(e.code)]: false }));
+
     }
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('keyup', handleKeyUp);

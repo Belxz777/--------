@@ -24,21 +24,18 @@ export default function Home() {
           
         <StatsGl />
           <Lights />
-        <Physics gravity={[0, -9.81, 0]}  >
+        <Physics   >
         <Obstakles  position={[0, 2, 4]} args={[2, 1, 2]} color="red"/>
   <Obstakles  position={[5, 1, 0]} args={[1.5, 2, 1.3]} color="orange" />
   <Obstakles  position={[0, 0.5, 5]} args={[3, 1, 1.3]} color="green" />
   <BaseCharacter controls position={[0, 2, 0]} args={[0.5]} color="yellow" />
   <Forest position={[10,2.2,20]} scale={20}/>
-          {Array.from({ length: 10 }, (_, i) => (
-            <Block key={i} position={[i * 2, i * 2, i * 2]} />
+          {Array.from({ length: 3 }, (_, i) => (
+            <Block key={i} position={[i * 2, i , i * 2]} />
           ))}
 
  <Blocks/> 
   <Sparkles scale={20} position={[10,10, 20]}/>
-  
-  
-
   <Floor rotation={[Math.PI / -2, 0, 0]} color="red"/>
   
         </Physics>
